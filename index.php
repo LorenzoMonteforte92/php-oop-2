@@ -11,16 +11,21 @@ $cats = new Category('Gatti');
 
 //istanze di Food figlia di Product
 $mongeDogMoist = new Food('https://picsum.photos/200', 'Pappa Buona', 'Monge', 'Cibo umido con alto apporto nutritivo', 9.99, '250g', 'umido', $dogs );
+$mongeDogMoist->setAge('Cucciolo');
+
 $NaturalTrainerCatDry = new Food('https://picsum.photos/200', 'Crocchi Crocchi', 'Natural Trainer', 'Crocchette con alto apporto nutritivo per gatti sterilizzati', 19.99, '1000g', 'secco', $cats );
+$NaturalTrainerCatDry->setAge('Adulto');
 
 //istanze di Kennel figlia di Product
 $waterproofDogCoat = new Kennel('https://picsum.photos/200', 'Cuccia Cane', 'Cuccia Via', 'cuccia per cane di grossa taglia', 14.99, 'L', $dogs);
 $sweaterCat = new Kennel('https://picsum.photos/200', 'Cuccia gatto', 'Gattuccia', 'cuccia per gatto', 12.99, 'S', $cats);
 
 //instanze di Toy
-$plushDog = new Product('https://picsum.photos/200', 'Scoiattolo Peluche', 'Active Dog', 'peluche scoiattolo', 3.99, $dogs);
-$catnipBallCat = new Product('https://picsum.photos/200', 'Palla di Gatto', 'Dynamicat', 'Pallina di erba gatta', 4.99, $cats);
+$plushDog = new Toy('https://picsum.photos/200', 'Scoiattolo Peluche', 'Active Dog', 'peluche scoiattolo', 3.99, $dogs);
+$plushDog->setAge('Cucciolo');
 
+$catnipBallCat = new Toy('https://picsum.photos/200', 'Palla di Gatto', 'Dynamicat', 'Pallina di erba gatta', 4.99, $cats);
+$catnipBallCat->setAge('Adulto');
 
 
 //array che raccolgono prodotti per categorie: cane o gatto
@@ -68,7 +73,9 @@ $catProducts = [
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h5 class="card-title"><?php echo $catProduct->name ?></h5>
                         <h6 class="card-text"><?php echo $catProduct->brand ?></h6>
-                        <div class="card-text"><p ><?php echo $catProduct->description ?></p></div>
+                        <div class="card-text">
+                            <p><?php echo $catProduct->description ?></p>
+                        </div>
                         <div class="d-flex justify-content-between">
                             <p class="card-text"><?php echo $catProduct->price?>$</p>
                             <p class="card-text"><?php echo $catProduct->category->name?></p>
