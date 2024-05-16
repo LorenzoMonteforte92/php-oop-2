@@ -2,8 +2,9 @@
 require_once __DIR__ . '/Models/Product.php';
 require_once __DIR__ . '/Models/Food.php';
 require_once __DIR__ . '/Models/Kennel.php';
+require_once __DIR__ . '/Models/Toys.php';
 
-//instanze di Product
+//instanze di Toys
 $plushDog = new Product('https://picsum.photos/200', 'Scoiattolo Peluche', 'Active Dog', 'peluche scoiattolo', 3.99,);
 $catnipBallCat = new Product('https://picsum.photos/200', 'Palla di Gatto', 'Dynamicat', 'Pallina di erba gatta', 4.99,);
 
@@ -14,8 +15,6 @@ $NaturalTrainerCatDry = new Food('https://picsum.photos/200', 'Crocchi Crocchi',
 //istanze di Kennel figlia di Product
 $waterproofDogCoat = new Kennel('https://picsum.photos/200', 'Cuccia Cane', 'Cuccia Via', 'cuccia per cane di grossa taglia', 14.99, 'L',);
 $sweaterCat = new Kennel('https://picsum.photos/200', 'Cuccia gatto', 'Gattuccia', 'cuccia per gatto', 12.99, 'S');
-
-
 
 
 
