@@ -2,19 +2,24 @@
 require_once __DIR__ . '/Models/Product.php';
 require_once __DIR__ . '/Models/Food.php';
 require_once __DIR__ . '/Models/Kennel.php';
-require_once __DIR__ . '/Models/Toys.php';
+require_once __DIR__ . '/Models/Toy.php';
+require_once __DIR__ . '/Models/Category.php';
 
-//instanze di Toys
-$plushDog = new Product('https://picsum.photos/200', 'Scoiattolo Peluche', 'Active Dog', 'peluche scoiattolo', 3.99,);
-$catnipBallCat = new Product('https://picsum.photos/200', 'Palla di Gatto', 'Dynamicat', 'Pallina di erba gatta', 4.99,);
+//istanza di category
+$dogs = new Category('Cani');
+$cats = new Category('Gatti');
 
 //istanze di Food figlia di Product
-$mongeDogMoist = new Food('https://picsum.photos/200', 'Pappa Buona', 'Monge', 'Cibo umido con alto apporto nutritivo', 9.99, '250g', 'umido' );
-$NaturalTrainerCatDry = new Food('https://picsum.photos/200', 'Crocchi Crocchi', 'Natural Trainer', 'Crocchette con alto apporto nutritivo per gatti sterilizzati', 19.99, '1000g', 'secco' );
+$mongeDogMoist = new Food('https://picsum.photos/200', 'Pappa Buona', 'Monge', 'Cibo umido con alto apporto nutritivo', 9.99, '250g', 'umido', $dogs );
+$NaturalTrainerCatDry = new Food('https://picsum.photos/200', 'Crocchi Crocchi', 'Natural Trainer', 'Crocchette con alto apporto nutritivo per gatti sterilizzati', 19.99, '1000g', 'secco', $cats );
 
 //istanze di Kennel figlia di Product
-$waterproofDogCoat = new Kennel('https://picsum.photos/200', 'Cuccia Cane', 'Cuccia Via', 'cuccia per cane di grossa taglia', 14.99, 'L',);
-$sweaterCat = new Kennel('https://picsum.photos/200', 'Cuccia gatto', 'Gattuccia', 'cuccia per gatto', 12.99, 'S');
+$waterproofDogCoat = new Kennel('https://picsum.photos/200', 'Cuccia Cane', 'Cuccia Via', 'cuccia per cane di grossa taglia', 14.99, 'L', $dogs);
+$sweaterCat = new Kennel('https://picsum.photos/200', 'Cuccia gatto', 'Gattuccia', 'cuccia per gatto', 12.99, 'S', $cats);
+
+//instanze di Toy
+$plushDog = new Product('https://picsum.photos/200', 'Scoiattolo Peluche', 'Active Dog', 'peluche scoiattolo', 3.99, $dogs);
+$catnipBallCat = new Product('https://picsum.photos/200', 'Palla di Gatto', 'Dynamicat', 'Pallina di erba gatta', 4.99, $cats);
 
 
 
@@ -64,7 +69,10 @@ $catProducts = [
                         <h5 class="card-title"><?php echo $catProduct->name ?></h5>
                         <h6 class="card-text"><?php echo $catProduct->brand ?></h6>
                         <div class="card-text"><p ><?php echo $catProduct->description ?></p></div>
-                        <p class="card-text"><?php echo $catProduct->price?>$</p>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text"><?php echo $catProduct->price?>$</p>
+                            <p class="card-text"><?php echo $catProduct->category->name?></p>
+                        </div>
                     </div>
                 </div>
                 <?php } ?>
@@ -83,7 +91,10 @@ $catProducts = [
                         <h5 class="card-title"><?php echo $dogProduct->name ?></h5>
                         <h6 class="card-text"><?php echo $dogProduct->brand ?></h6>
                         <div class="card-text"><p ><?php echo $dogProduct->description ?></p></div>
-                        <p class="card-text"><?php echo $dogProduct->price?>$</p>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text"><?php echo $dogProduct->price?>$</p>
+                            <p class="card-text"><?php echo $dogProduct->category->name?></p>
+                        </div>
                     </div>
                 </div>
                 <?php } ?>

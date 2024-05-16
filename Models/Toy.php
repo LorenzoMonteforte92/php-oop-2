@@ -1,5 +1,7 @@
 <?php
-class Product{
+require_once __DIR__ . '/Product.php';
+
+class Toy extends Product{
 
     public $image;
     public $name;
@@ -8,7 +10,6 @@ class Product{
     public $price;
     public $reviews;
     public $material;
-    public $category;
 
     public function __construct($_image, $_name, $_brand, $_description, $_price, Category $_category) {
         $this->image = $_image;
@@ -19,6 +20,8 @@ class Product{
         $this->category = $_category;
 
     }
+
+
 }
 
 
